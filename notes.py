@@ -107,3 +107,13 @@ age = int(input("How old are you? "))
 if age < 18:
     print("Sorry, we can't serve you.")
 
+#---------------------------------------------------------------------------------------------#
+#                                        # Day 3                                              #
+#---------------------------------------------------------------------------------------------#
+
+    # FOR loops
+# FOR loops allow us to repeat some action once for each item in a collection.
+
+ # The break statement
+# used to stop a loop at a certain criteria been met.
+# not much note to add.
