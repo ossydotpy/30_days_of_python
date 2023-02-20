@@ -117,3 +117,96 @@ if age < 18:
  # The break statement
 # used to stop a loop at a certain criteria been met.
 # not much note to add.
+
+
+#---------------------------------------------------------------------------------------------#
+#                                        # Day 4                                               #
+#---------------------------------------------------------------------------------------------#
+    #  FOR LOOPS
+
+# for loops are great for two kinds of repeated actions:
+
+# When we want to do something for each item in some group.
+# When we want to do something a set number of times.
+# syntax
+# for some_condition:
+#   do something
+
+# Example
+# let's write a loop to determine whether or not a number is prime.
+
+dividend =  int(input("enter a number:\n"))
+
+for divisor in range(2, dividend):
+    if dividend%divisor == 0:
+        print("not prime.")
+        break
+else:
+    print(f"{dividend} is prime")
+
+
+
+
+#---------------------------------------------------------------------------------------------#
+#                                        # Day 5                                              #
+#---------------------------------------------------------------------------------------------#
+
+    # WHILE LOOP
+# WHILE  loops are used :
+# if we want to perform an action as many times as needed until some condition is met.
+# if we want to perform some action over and over again forever.
+
+#syntax
+# While some_condition:
+#   do something
+
+
+# let's write a loop to determine whether or not a number is prime.
+
+dividend =  int(input("enter a number:\n"))
+divisor = 2
+
+while dividend>divisor:
+    if dividend%divisor ==0:
+        print(f"{dividend} is not prime")
+        break
+    divisor += 1
+else:
+    print(f"{dividend} is prime")
+
+
+#---------------------------------------------------------------------------------------------#
+#                                        # Day 5                                              #
+#---------------------------------------------------------------------------------------------#
+    # Enumerate an Zip
+
+movies = [
+    (
+        "Eternal Sunshine of the Spotless Mind",
+        "Michel Gondry",
+        2004
+    ),
+    (
+        "Memento",
+        "Christopher Nolan",
+        2000
+    ),
+    (
+        "Requiem for a Dream",
+        "Darren Aronofsky",
+        2000
+    )
+]
+for counter, (title, director, year) in enumerate(movies, start=1):
+    print(f"{counter}. {title} ({year}), by {director}")
+
+# The ZIP function is used to combine two or more iterables into one.
+#syntax
+# zip(iterable_1, iterable_2,....)
+# eg:
+# pet_owners = ["Paul", "Andrea", "Marta"]
+# pets = ["Fluffy", "Bubbles", "Captain Catsworth"]
+# results:
+# ("Paul", "Fluffy"), ("Andrea", "Bubbles"), ("Marta", "Captain Catsworth")
+
+
