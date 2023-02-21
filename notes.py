@@ -209,4 +209,39 @@ for counter, (title, director, year) in enumerate(movies, start=1):
 # results:
 # ("Paul", "Fluffy"), ("Andrea", "Bubbles"), ("Marta", "Captain Catsworth")
 
+#---------------------------------------------------------------------------------------------#
+#                                        # Day 8                                              #
+#---------------------------------------------------------------------------------------------#
+    # SETS
+# just like dictionaries, sets are defined by a pair of curly brackets.
+# differene though is there is no key-value pair in sets.
+# we can't include any mutable types in a set, or any immutable types that contain mutable types.
+# we can't add lists or dictionaries to a set, and we can't add tuples that contain things like lists or dictionaries.
+# we can't have nested sets
+# `add` method allows us to add a SINGLE value to the set we call it on
+    #example
+# vegetables = {"carrot", "lettuce", "broccoli", "onion"}
+# vegetables.add("potato")
+# print(vegetables)  # {'lettuce', 'broccoli', 'onion', 'potato', 'carrot'}
 
+# `update` method allows us to add multiple items to a set.
+# `remove` method, which allows us to remove a single item.
+    # SET OPERATIONS
+
+    # .union method
+    # set1.union(set2)
+    # returns a combination of the two sets where duplicate elements are repeated just once.
+
+    # .intersection() method
+    # syntax - set1.intersection(set2)
+    # returns elements common to both sets.
+    
+    # .diifernce() method
+    # returns elements which are missing from the second set compared to the first.
+    # the order of the sets is VERY IMPORTANT
+    # syntax - set1.difference(set2)
+
+    # .symmetric_difference() method
+    # this gives us all of the items which only feature in one of the sets.
+    # Unlike difference the order of the sets doesn't matter.
+    # syntax - set1.symmetric_difference(set2)
