@@ -23,6 +23,10 @@ numbers = range(17,29)
 while True:
     guess = int(input("ener a number:\n>>> ").strip())
     if guess not in numbers:
+        if guess < min(numbers):
+            print("too low")
+        elif guess> max(numbers):
+            print("too high")
         print("try again")
         continue
     else:

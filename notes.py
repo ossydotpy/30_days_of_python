@@ -245,3 +245,8 @@ for counter, (title, director, year) in enumerate(movies, start=1):
     # this gives us all of the items which only feature in one of the sets.
     # Unlike difference the order of the sets doesn't matter.
     # syntax - set1.symmetric_difference(set2)
+
+#---------------------------------------------------------------------------------------------#
+#                                        # Day 8                                              #
+#---------------------------------------------------------------------------------------------#
+    # FUNCTIONS
