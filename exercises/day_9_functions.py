@@ -56,8 +56,27 @@ series = [
 for show in range(series):
     print_show_info(show)
 
-# 4) Create a function to test if a word is a palindrome. A palindrome is a string of characters that are identical whether read forwards or backwards. For example, “was it a car or a cat I saw” is a palindrome.
+# 4) Create a function to test if a word is a palindrome.
+# A palindrome is a string of characters that are identical whether read forwards or backwards.
+# For example, “was it a car or a cat I saw” is a palindrome.
 
-# In the day 7 project, we saw a number of ways to reverse a sequence, and you can use this to verify whether a string is the same backwards as it is in its original order. You can also use a slicing approach. Once you’ve found whether or not a word is a palindrome, you should print the result to the user.
+# In the day 7 project, we saw a number of ways to reverse a sequence, 
+# and you can use this to verify whether a string is the same backwards as it is in its original order. 
+# You can also use a slicing approach. 
+# Once you’ve found whether or not a word is a palindrome, you should print the result to the user.
 
-# Make sure to clean up the argument provided to the function. We should be stripping whitespace from both ends of the string, and we should convert it all to the same case, just in case we’re dealing with a name, like “Hannah”.
+# Make sure to clean up the argument provided to the function. 
+# We should be stripping whitespace from both ends of the string, 
+# and we should convert it all to the same case, just in case we’re dealing with a name, like “Hannah”.
+
+def palindrome_check():
+    word =  list(input("Enter a word to check for palindromes:\n>>> ").lower().strip())
+    reversed = word.copy()
+    reversed.reverse()
+    
+    if word == reversed:
+        print("pal")
+    else:
+        print("no pal")
+
+palindrome_check()
