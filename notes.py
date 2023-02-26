@@ -263,3 +263,9 @@ for counter, (title, director, year) in enumerate(movies, start=1):
 # reading list mini project
 # creating a book record keeper using everythin we've learnt so far.
 # project in exercises/day_10_reading_list_project.py
+
+#---------------------------------------------------------------------------------------------#
+#                                        # Day 11                                             #
+#---------------------------------------------------------------------------------------------#
+# scope & returning_values
+# no notes
