@@ -269,3 +269,15 @@ for counter, (title, director, year) in enumerate(movies, start=1):
 #---------------------------------------------------------------------------------------------#
 # scope & returning_values
 # no notes
+
+#---------------------------------------------------------------------------------------------#
+#                                        # Day 12                                             #
+#---------------------------------------------------------------------------------------------#
+    # Working with files
+ # The open function
+# When called, it's going to gives us back a means of accessing the data inside a file we specify.
+ # syntax
+ # example_file = open("example.txt")
+# this saves the content of example.text to the exampe_file variable
+# We can see the file's contents by calling the read method on what
+#  open returned for us.
