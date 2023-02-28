@@ -280,4 +280,4 @@ for counter, (title, director, year) in enumerate(movies, start=1):
  # example_file = open("example.txt")
 # this saves the content of example.text to the exampe_file variable
 # We can see the file's contents by calling the read method on what
-#  open returned for us.
+#  open returned for us
