@@ -17,60 +17,122 @@
 # Project: Reading List (Hard Version)
 
 def main():
-        pass
+        while True:
+                try:
+                        choice = context_menu()
+                        if  choice == 1:
+                                addBook()
+                                continue
+                        elif choice==2:
+                                books = retrieveBooks()
+                                if books:
+                                        showBooks(books)
+                                continue
+                        elif choice == 3:
+                                results = searchBooks()
+                                if results:
+                                        showBooks(results)
+                                else:
+                                        print(' no matching records')
+                                continue
+                        elif choice ==4:
+                               update_reading_list(deleteBook)
 
+                        elif choice == 5:
+                               update_reading_list(markRead)
+                               continue
+                                
+                        elif choice == 6:
+                               print('exiting module...\nsession ended!')
+                               break
+                        
+                        else:
+                                print('select a valid option from (1-6)')
+
+
+                except ValueError:
+                        print('ll')
+               
 
 def addBook():
         with open('booksFile.csv','a') as books_file:
-                title = input().strip('input book title').lower()
+                title = input('input book title:\n>>> ').strip().lower()
                 author = input("add author name:\n>>> ").lower().strip()
                 year_of_publication = input("add year of publication:\n>>> ").lower().strip()
-                readStatus = False
-                book = f"{title}, {year_of_publication}, {author}, {readStatus}, {readStatus}\n"
+                readStatus = 'Unread'
+                book = f"{title}, {author}, {year_of_publication}, {readStatus}\n"
 
-                books_file.write(book)
+                books_file.write(book.lower())
         print('New Book Added')
 
-                
 
 def retrieveBooks():
         books = []
         with open('./booksFile.csv','r') as books_file:
                 book_data = books_file.readlines()
                 for book in book_data:
-                        title,author,year = book.strip().split(',')
+                        title,author,year,readStatus = book.strip().split(',')
                         books.append({
                                 'title':title,
                                 'author':author,
-                                'year':year
+                                'year':year,
+                                'status':readStatus
                         })
         return books
 
 
-def update_book():
-        books =retrieveBooks()
-        showBooks()
-        edit = []
-        choice = print('enter the title of the book you want to update:\n')
+def showBooks(booksList):
+        print()
+        print(f'showing {len(booksList)} saved book(s)')
+        print()
+        for index, book in enumerate(booksList,1):
+                details =(f"{index}). {book['title']} - ({book['year']}) by {book['author']} --{book['status']}")
+                print(details.title())
+                print()
 
-        for book in books:
-                if choice in books['title']:
-                        print(f'you are about to update the status of "{book}"\n')
-                        edit.append(book)
-                        
-        
-        
-        
-        pass
-
-def showBooks():
-        pass
 
 def searchBooks():
-        pass
+        books = retrieveBooks()
+        matches = []
+        query = input('Enter a search term:\n>>> ').strip().lower()
+        print()
+        for book in books:
+                if query in book['title']:
+                        matches.append(book)
+        return matches
 
-def deleteBooks():
-        pass
+      
+# function called to perform an action[delete/mark] on a book                 
+def update_reading_list(function):
+        books = retrieveBooks()
+        matching_books = searchBooks()
+
+        if matching_books:
+                function(books, matching_books[0])
+                with open("booksFile.csv", "w") as reading_list:
+                        for book in books:
+                                reading_list.write(f"{book['title']},{book['year']},{book['author']},{book['status']}\n")
+        else:
+                print("No matching results. Search for another book.\n")
+
+# mark as read
+def markRead(booksList,toUpdate):
+        match_index = booksList.index(toUpdate)
+        confirm = input(f'are you sure you want to delte {toUpdate["title"]}? Y/N\n>>> ').strip().lower()
+        if confirm == 'y':
+                booksList[match_index]['status'] = 'Read'
+                print(f'{toUpdate["title"]} marked as read!\n')
+        elif confirm == 'n':
+                print('book not updated\n')
+
+# delete a book
+def deleteBook(booksList, toDelete):
+        confirm = input(f'are you sure you want to delte {toDelete["title"]}? Y/N\n>>> ').strip().lower()
+        if confirm == 'y':
+                booksList.remove(toDelete)
+                print("book removed successfully!\n")
+        elif confirm == 'n':
+                print('book not deleted\n')
 
 
 
@@ -79,7 +141,9 @@ def context_menu(): # function to display the menu items
             1. add new book
             2. view my books
             3. search books
-            4. delete book(s)
-            n. exit \n>>> """).strip())
+            4. delete books(s)
+            5. mark book as read
+            6. exit \n>>> """).strip())
         return menu_item
+
 main()
