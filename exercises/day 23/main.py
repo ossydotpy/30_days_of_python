@@ -12,9 +12,13 @@ def main():
     while True:
         choice
         if choice==1:
-            col_num = int(input('col num?:'))
-            file_name = input("enter your desired filename: ")
-            chart(col_num,filename=file_name)
+            try:
+                col_num = int(input('enter the number of the column you want to chart?:'))
+                file_name = input("enter your desired filename: ")
+                chart(col_num,filename=file_name)
+            except (IndexError,ValueError):
+                print('invalid column')
+                continue
         elif choice == 2:
              break
         print('done')
