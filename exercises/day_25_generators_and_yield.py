@@ -51,3 +51,4 @@ names = (name.title().strip() for name in names)
 # Hint: We can shuffle cards using the random.shuffle method. 
 # This shuffles a sequence in-place, which means it modifies the original sequence. 
 # We can then create an iterator from that sequence using iter to make is easy for us to retrieve cards one at a time.
+
