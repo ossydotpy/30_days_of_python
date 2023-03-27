@@ -51,4 +51,65 @@ names = (name.title().strip() for name in names)
 # Hint: We can shuffle cards using the random.shuffle method. 
 # This shuffles a sequence in-place, which means it modifies the original sequence. 
 # We can then create an iterator from that sequence using iter to make is easy for us to retrieve cards one at a time.
+import random
+import itertools
+def main():
+    suits =("Clubs", "Hearts", "Diamonds", "Spades")
+    ranks = ("Ace","King","Queen","Spade",2,3,4,5,6,7,8,9)
 
+    cards = []
+    for rank in ranks:
+        for suit in suits:
+            cards.append((rank,suit))
+
+    def get_players():
+        while True:
+            number_of_players = input("How many players are there? ").strip()
+
+            try:
+                number_of_players = int(number_of_players)
+            except ValueError:
+                print("You must enter an integer.")
+            else:
+                if number_of_players in range(2, 11):
+                    return number_of_players
+                elif number_of_players < 2:
+                    print("You must have at least 2 players.")
+                else:
+                    print("You can have a maximum of 10 players.")
+
+    # shuffling the deck
+    def shuffleDeck(deck):
+        random.shuffle(deck)
+        return iter(deck)
+
+    # dealing cards to players
+    def dealtoPlayers(deck,number_of_players):
+        first_deal = [next(deck) for player in range(number_of_players)]
+        second_deal = [next(deck) for player in range(number_of_players)]
+
+        hands = zip(first_deal,second_deal)
+
+        for i,(first,second) in enumerate(hands, start=1):
+            print(f"player {i} was dealt [{first}, {second}]")
+
+
+    # dealing cards to the board
+    def dealtoBoard(deck):
+        next(deck) #burned the top card
+        print("top card burned")
+        flop = ', '.join(str(next(deck)) for _ in range(3))
+        print(f"the flop: {flop}")
+
+        print(f"the turn: {next(deck)}") # the turn
+        
+        print(f"the river: {next(deck)}") # the river
+
+
+    def deal(deck, number_of_players):
+        deck = shuffleDeck(deck)
+        dealtoPlayers(deck,number_of_players)
+        dealtoBoard(deck)
+
+    deal(cards,get_players())
+main()
